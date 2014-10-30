@@ -1,1 +1,8 @@
 C:\Users\armen_000\Documents\GitHub\Colorizer\Colorizer\Colorizer\bin\Debug\Colorizer.exe.config
+C:\Users\armen_000\Documents\GitHub\Colorizer\Colorizer\Colorizer\bin\Debug\Colorizer.exe
+C:\Users\armen_000\Documents\GitHub\Colorizer\Colorizer\Colorizer\bin\Debug\Colorizer.pdb
+C:\Users\armen_000\Documents\GitHub\Colorizer\Colorizer\Colorizer\obj\Debug\Colorizer.csprojResolveAssemblyReference.cache
+C:\Users\armen_000\Documents\GitHub\Colorizer\Colorizer\Colorizer\obj\Debug\Colorizer.Properties.Resources.resources
+C:\Users\armen_000\Documents\GitHub\Colorizer\Colorizer\Colorizer\obj\Debug\Colorizer.csproj.GenerateResource.Cache
+C:\Users\armen_000\Documents\GitHub\Colorizer\Colorizer\Colorizer\obj\Debug\Colorizer.exe
+C:\Users\armen_000\Documents\GitHub\Colorizer\Colorizer\Colorizer\obj\Debug\Colorizer.pdb
