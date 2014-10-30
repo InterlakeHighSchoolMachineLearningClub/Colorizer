@@ -6,3 +6,6 @@ C:\Users\armen_000\Documents\GitHub\Colorizer\Colorizer\Colorizer\obj\Debug\Colo
 C:\Users\armen_000\Documents\GitHub\Colorizer\Colorizer\Colorizer\obj\Debug\Colorizer.csproj.GenerateResource.Cache
 C:\Users\armen_000\Documents\GitHub\Colorizer\Colorizer\Colorizer\obj\Debug\Colorizer.exe
 C:\Users\armen_000\Documents\GitHub\Colorizer\Colorizer\Colorizer\obj\Debug\Colorizer.pdb
+C:\Users\Tarik\git\Colorizer\Colorizer\Colorizer\bin\Debug\Colorizer.exe.config
+C:\Users\Tarik\git\Colorizer\Colorizer\Colorizer\obj\Debug\Colorizer.exe
+C:\Users\Tarik\git\Colorizer\Colorizer\Colorizer\obj\Debug\Colorizer.pdb
