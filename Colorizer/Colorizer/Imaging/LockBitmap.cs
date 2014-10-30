@@ -33,6 +33,11 @@ namespace Colorizer.Imaging
         }
         public LockBitmap(int width, int height)
             : this(new Bitmap(width, height)) { }
+
+        public LockBitmap()
+        {
+            // TODO: Complete member initialization
+        }
         public void LockBits()
         {
             try
