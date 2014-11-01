@@ -39,14 +39,26 @@
     <Reference Include="Accord.Controls.Imaging">
       <HintPath>..\packages\Accord.Controls.Imaging.2.13.1\lib\net40\Accord.Controls.Imaging.dll</HintPath>
     </Reference>
+    <Reference Include="Accord.Imaging">
+      <HintPath>..\packages\Accord.Imaging.2.13.1\lib\net40\Accord.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.MachineLearning">
+      <HintPath>..\packages\Accord.MachineLearning.2.13.1\lib\net40\Accord.MachineLearning.dll</HintPath>
+    </Reference>
     <Reference Include="Accord.MachineLearning.GPL">
       <HintPath>..\packages\Accord.MachineLearning.GPL.2.13.1\lib\net40\Accord.MachineLearning.GPL.dll</HintPath>
     </Reference>
     <Reference Include="Accord.Math">
       <HintPath>..\packages\Accord.Math.2.13.1\lib\net40\Accord.Math.dll</HintPath>
     </Reference>
+    <Reference Include="Accord.Neuro">
+      <HintPath>..\packages\Accord.Neuro.2.13.1\lib\net40\Accord.Neuro.dll</HintPath>
+    </Reference>
     <Reference Include="Accord.Statistics">
       <HintPath>..\packages\Accord.Statistics.2.13.1\lib\net40\Accord.Statistics.dll</HintPath>
+    </Reference>
+    <Reference Include="Accord.Vision">
+      <HintPath>..\packages\Accord.Vision.2.13.1\lib\net40\Accord.Vision.dll</HintPath>
     </Reference>
     <Reference Include="AForge">
       <HintPath>..\packages\AForge.2.2.5\lib\AForge.dll</HintPath>
@@ -54,14 +66,23 @@
     <Reference Include="AForge.Controls">
       <HintPath>..\packages\AForge.Controls.2.2.5\lib\AForge.Controls.dll</HintPath>
     </Reference>
+    <Reference Include="AForge.Genetic">
+      <HintPath>..\packages\AForge.Genetic.2.2.5\lib\AForge.Genetic.dll</HintPath>
+    </Reference>
     <Reference Include="AForge.Imaging">
       <HintPath>..\packages\AForge.Imaging.2.2.5\lib\AForge.Imaging.dll</HintPath>
     </Reference>
     <Reference Include="AForge.Math">
       <HintPath>..\packages\AForge.Math.2.2.5\lib\AForge.Math.dll</HintPath>
     </Reference>
+    <Reference Include="AForge.Neuro">
+      <HintPath>..\packages\AForge.Neuro.2.2.5\lib\AForge.Neuro.dll</HintPath>
+    </Reference>
     <Reference Include="AForge.Video">
       <HintPath>..\packages\AForge.Video.2.2.5\lib\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Vision">
+      <HintPath>..\packages\AForge.Vision.2.2.5\lib\AForge.Vision.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -83,7 +104,7 @@
     </Compile>
     <Compile Include="Imaging\LockBitmap.cs" />
     <Compile Include="Learning\IDataTransform.cs" />
-    <Compile Include="Learning\Mean.cs" />
+    <Compile Include="Learning\MeanAll.cs" />
     <Compile Include="Learning\FeatureAggregator.cs" />
     <Compile Include="Learning\IFeature.cs" />
     <Compile Include="Program.cs" />
