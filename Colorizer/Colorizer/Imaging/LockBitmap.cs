@@ -155,7 +155,6 @@ namespace Colorizer.Imaging
         public static implicit operator Bitmap(LockBitmap bit)
         {
             bit.UnlockBits();
-            bit.LockBits();
             return bit.source;
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Colorizer.Imaging;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,10 +16,12 @@ namespace Colorizer
         public Form1()
         {
             InitializeComponent();
-            var k = DataMining.WebTools.DownloadImage(@"https://apod.nasa.gov/apod/image/1403/heic1404b1920.jpg");
-            Bitmap l = (Bitmap)k;
+            
+            var bit = new LockBitmap((Bitmap)Bitmap.FromFile(@"C:\Users\armen_000\Pictures\heic1404b1920.jpg"));
+            Imaging.LockBitmapTools.InPlaceGrayScale(bit);
+            this.mainPictureBox.Image = bit;
 
-            this.mainPictureBox.Image = l;
+            bit.SetPixel(0, 0, Color.FloralWhite);
         }
     }
 }

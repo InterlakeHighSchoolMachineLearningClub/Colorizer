@@ -105,6 +105,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Imaging\LockBitmap.cs" />
+    <Compile Include="Imaging\LockBitmapTools.cs" />
     <Compile Include="Learning\IDataTransform.cs" />
     <Compile Include="Learning\MeanAll.cs" />
     <Compile Include="Program.cs" />
