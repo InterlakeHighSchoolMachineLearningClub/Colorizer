@@ -14,13 +14,18 @@ namespace Colorizer.DataMining
     {
         public static string DownloadHtml(string s)
         {
+            s.NullCheck();
+
             using (WebClient client = new WebClient())
             {
                 return client.DownloadString(s);
             }
         }
+
         public static LockBitmap DownloadLockBitmap(string s)
         {
+            s.NullCheck();
+
             using (WebClient client = new WebClient())
             {
                 Stream stream = client.OpenRead(s);
@@ -35,6 +40,7 @@ namespace Colorizer.DataMining
                     return new LockBitmap(bitmap);
                 }
             }
+            throw new ArgumentNullException("Didn't download file");
         }
     }
 }

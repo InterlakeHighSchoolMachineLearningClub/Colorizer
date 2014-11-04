@@ -97,7 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicExtensions.cs" />
-    <Compile Include="DataMining\HTMLTools.cs" />
+    <Compile Include="DataMining\WebTools.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
