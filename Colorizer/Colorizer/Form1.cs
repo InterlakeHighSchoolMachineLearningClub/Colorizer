@@ -15,6 +15,10 @@ namespace Colorizer
         public Form1()
         {
             InitializeComponent();
+            var k = DataMining.WebTools.DownloadImage(@"https://apod.nasa.gov/apod/image/1403/heic1404b1920.jpg");
+            Bitmap l = (Bitmap)k;
+
+            this.mainPictureBox.Image = l;
         }
     }
 }
