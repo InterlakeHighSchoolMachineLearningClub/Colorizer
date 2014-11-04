@@ -34,3 +34,4 @@ C:\Users\Tarik\git\Colorizer\Colorizer\Colorizer\bin\Debug\AForge.Controls.xml
 C:\Users\Tarik\git\Colorizer\Colorizer\Colorizer\bin\Debug\AForge.Imaging.xml
 C:\Users\Tarik\git\Colorizer\Colorizer\Colorizer\bin\Debug\AForge.Math.xml
 C:\Users\Tarik\git\Colorizer\Colorizer\Colorizer\bin\Debug\AForge.Video.xml
+C:\Users\armen_000\Documents\GitHub\Colorizer\Colorizer\Colorizer\obj\Debug\Colorizer.Form1.resources
