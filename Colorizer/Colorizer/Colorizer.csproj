@@ -104,6 +104,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Imaging\IImageFilter.cs" />
     <Compile Include="Imaging\LockBitmap.cs" />
     <Compile Include="Imaging\LockBitmapTools.cs" />
     <Compile Include="Learning\IDataTransform.cs" />
