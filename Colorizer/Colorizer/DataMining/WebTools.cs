@@ -36,12 +36,10 @@ namespace Colorizer.DataMining
                 stream.Flush();
                 stream.Close();
 
-                if (bitmap != null)
-                {
-                    return new LockBitmap(bitmap);
-                }
+                bitmap.NullCheck();
+
+                return new LockBitmap(bitmap);
             }
-            throw new ArgumentNullException("Didn't download file");
         }
         public static Image DownloadImage(string _URL)
         {
