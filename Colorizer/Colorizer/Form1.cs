@@ -20,7 +20,8 @@ namespace Colorizer
         {
             InitializeComponent();
 
-            var bit = new LockBitmap((Bitmap)Bitmap.FromFile(@"C:\Users\armen_000\Pictures\heic1404b1920.jpg"));
+            var path = System.Environment.GetEnvironmentVariable("USERPROFILE");
+            var bit = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\heic1404b1920.jpg"));
             Imaging.LockBitmapTools.InPlaceGrayScale(bit);
             this.mainPictureBox.Image = bit;
 
@@ -42,6 +43,7 @@ namespace Colorizer
                 new double[]{1},
                 new double[]{0}
             };
+
             for (int i = 0; i < 100; i++)
             {
                 learn.RunEpoch(input, output);                

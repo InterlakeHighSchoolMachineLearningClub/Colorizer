@@ -9,19 +9,19 @@ namespace Colorizer.Imaging
 {
     public static class LockBitmapTools
     {
+        delegate Color ColorTransform(Color color);
+
         public static void InPlaceGrayScale(LockBitmap bitmap)
         {
-            for (int y = 0; y < bitmap.Height; y++)
+            ColorTransform gray = color =>
             {
-                for (int x = 0; x < bitmap.Width; x++)
-                {
-                    var pixel = bitmap[x, y];
+                int avg = (color.R + color.B + color.G) / 3;
+                return Color.FromArgb(avg, avg, avg);
+            };
 
-                    var average = (byte)((double)(pixel.R + pixel.G + pixel.B) / 3D);
-                    
-                    bitmap[x, y] = Color.FromArgb(average, average, average);
-                }
-            }
+            for (int y = 0; y < bitmap.Height; y++)
+                for (int x = 0; x < bitmap.Width; x++)
+                    bitmap[x, y] = gray(bitmap[x, y]);
         }
     }
 }
