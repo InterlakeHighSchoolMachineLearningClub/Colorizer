@@ -20,10 +20,17 @@ namespace Colorizer
         {
             InitializeComponent();
 
+            var a = new Imaging.SobelFilter() { Grayscale = true };
             var path = System.Environment.GetEnvironmentVariable("USERPROFILE");
             var bit = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\heic1404b1920.jpg"));
-            Imaging.LockBitmapTools.InPlaceGrayScale(bit);
-            this.mainPictureBox.Image = bit;
+            this.mainPictureBox.Image = a.Filter(bit);
+            //TestLearning();
+
+            Debugger.Break();
+        }
+
+        private static void TestLearning()
+        {
 
             DeepBeliefNetwork network = new Accord.Neuro.Networks.DeepBeliefNetwork(2, 23, 1);
             LevenbergMarquardtLearning learn = new Accord.Neuro.Learning.LevenbergMarquardtLearning(network);
@@ -46,15 +53,13 @@ namespace Colorizer
 
             for (int i = 0; i < 100; i++)
             {
-                learn.RunEpoch(input, output);                
+                learn.RunEpoch(input, output);
             }
 
             Debug.WriteLine(network.Compute(new double[] { 0, 0 }).First());
             Debug.WriteLine(network.Compute(new double[] { 1, 0 }).First());
             Debug.WriteLine(network.Compute(new double[] { 0, 1 }).First());
             Debug.WriteLine(network.Compute(new double[] { 1, 1 }).First());
-
-            Debugger.Break();
         }
     }
 }

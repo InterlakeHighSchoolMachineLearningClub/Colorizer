@@ -25,7 +25,13 @@ namespace Colorizer.Imaging
         public int Depth { get; private set; }
         public int Width { get; private set; }
         public int Height { get; private set; }
-
+        public int Stride
+        {
+            get
+            {
+                return this.bitmapData.Stride;
+            }
+        }
         public LockBitmap(Bitmap source)
         {
             this.source = source;
@@ -34,10 +40,6 @@ namespace Colorizer.Imaging
         public LockBitmap(int width, int height)
             : this(new Bitmap(width, height)) { }
 
-        public LockBitmap()
-        {
-            // TODO: Complete member initialization
-        }
         public void LockBits()
         {
             try
@@ -75,10 +77,8 @@ namespace Colorizer.Imaging
         {
             try
             {
-                // Copy data from byte array to pointer
                 Marshal.Copy(this.Pixels, 0, Iptr, this.Pixels.Length);
 
-                // Unlock bitmap data
                 source.UnlockBits(bitmapData);
             }
             catch (Exception ex)
@@ -91,16 +91,14 @@ namespace Colorizer.Imaging
         {
             Color clr = Color.Empty;
 
-            // Get color components count
             int cCount = Depth / 8;
 
-            // Get start index of the specified pixel
             int i = ((y * Width) + x) * cCount;
 
             if (i > Pixels.Length - cCount)
                 throw new IndexOutOfRangeException();
 
-            if (this.Depth == 32) // For 32 bpp get Red, Green, Blue and Alpha
+            if (this.Depth == 32)
             {
                 byte b = Pixels[i];
                 byte g = Pixels[i + 1];
@@ -108,7 +106,7 @@ namespace Colorizer.Imaging
                 byte a = Pixels[i + 3]; // a
                 clr = Color.FromArgb(a, r, g, b);
             }
-            if (this.Depth == 24) // For 24 bpp get Red, Green and Blue
+            if (this.Depth == 24)
             {
                 byte b = Pixels[i];
                 byte g = Pixels[i + 1];
@@ -116,7 +114,6 @@ namespace Colorizer.Imaging
                 clr = Color.FromArgb(r, g, b);
             }
             if (this.Depth == 8)
-            // For 8 bpp get color value (Red, Green and Blue values are the same)
             {
                 byte c = Pixels[i];
                 clr = Color.FromArgb(c, c, c);
@@ -126,27 +123,24 @@ namespace Colorizer.Imaging
 
         public void SetPixel(int x, int y, Color color)
         {
-            // Get color components count
             int cCount = this.Depth / 8;
 
-            // Get start index of the specified pixel
             int i = ((y * this.Width) + x) * cCount;
 
-            if (this.Depth == 32) // For 32 bpp set Red, Green, Blue and Alpha
+            if (this.Depth == 32)
             {
                 this.Pixels[i] = color.B;
                 this.Pixels[i + 1] = color.G;
                 this.Pixels[i + 2] = color.R;
                 this.Pixels[i + 3] = color.A;
             }
-            if (this.Depth == 24) // For 24 bpp set Red, Green and Blue
+            if (this.Depth == 24)
             {
                 this.Pixels[i] = color.B;
                 this.Pixels[i + 1] = color.G;
                 this.Pixels[i + 2] = color.R;
             }
             if (this.Depth == 8)
-            // For 8 bpp set color value (Red, Green and Blue values are the same)
             {
                 this.Pixels[i] = color.B;
             }

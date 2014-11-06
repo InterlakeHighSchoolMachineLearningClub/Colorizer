@@ -1,6 +1,7 @@
 ﻿using Colorizer.Imaging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -41,43 +42,36 @@ namespace Colorizer.DataMining
                 return new LockBitmap(bitmap);
             }
         }
-        public static Image DownloadImage(string _URL)
+        public static Image DownloadImage(string url)
         {
-            Image _tmpImage = null;
+            Image mpImage = null;
 
             try
             {
-                System.Net.HttpWebRequest httpWebRequest = (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create(_URL);
+                System.Net.HttpWebRequest httpWebRequest = (System.Net.HttpWebRequest)System.Net.HttpWebRequest.Create(url);
                 httpWebRequest.AllowWriteStreamBuffering = true;
 
-                // You can also specify additional header values like the user agent or the referer: (Optional)
                 httpWebRequest.UserAgent = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1)";
                 httpWebRequest.Referer = "http://www.google.com/";
 
-                // set timeout for 20 seconds (Optional)
                 httpWebRequest.Timeout = 20000;
 
-                // Request response:
                 System.Net.WebResponse webResponse = httpWebRequest.GetResponse();
 
-                // Open data stream:
                 System.IO.Stream webStream = webResponse.GetResponseStream();
 
-                // convert webstream to image
                 var tmpImage = Image.FromStream(webStream);
 
-                // Cleanup
                 webResponse.Close();
                 webResponse.Close();
             }
-            catch (Exception _Exception)
+            catch (Exception ex)
             {
-                // Error
-                Console.WriteLine("Exception caught in process: {0}", _Exception.ToString());
+                Debug.WriteLine("Exception caught in process: {0}", ex.ToString());
                 return null;
             }
 
-            return _tmpImage;
+            return mpImage;
         }
 
     }
