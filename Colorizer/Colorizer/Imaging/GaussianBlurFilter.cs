@@ -13,14 +13,15 @@ namespace Colorizer.Imaging
         public readonly double Weight;
 
         private readonly double[,] filter;
-        public GaussianBlurFilter(int length, double weih)
+
+        public GaussianBlurFilter(int length = 10, double weih = 16)
         {
             Trace.Assert(length > 0);
             Trace.Assert(weih > 0);
 
             this.Length = length;
             this.Weight = weih;
-            
+
             this.filter = GaussianBlurFilter.Calculate(length, weih);
         }
         public override LockBitmap Filter(LockBitmap source)

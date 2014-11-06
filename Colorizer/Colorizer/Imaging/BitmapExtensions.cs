@@ -10,7 +10,7 @@ using System.Runtime.CompilerServices;
 
 namespace Colorizer.Imaging
 {
-    public static class ExtBitmap
+    public static partial class ExtBitmap
     {
         private static Bitmap CopyToSquareCanvas(this Bitmap sourceBitmap, int canvasWidthLength)
         {
@@ -317,6 +317,7 @@ namespace Colorizer.Imaging
         {
             return new LockBitmap(((Bitmap)(sourceBitmap)).ConvolutionFilter(filterMatrix, factor, bias, grayscale));
         }
+
         public static LockBitmap ConvolutionFilterWithChoiceOfGrayscale(this LockBitmap sourceBitmap,
                                                         double[,] xFilterMatrix,
                                                         double[,] yFilterMatrix,
@@ -326,5 +327,16 @@ namespace Colorizer.Imaging
         {
             return new LockBitmap(((Bitmap)(sourceBitmap)).ConvolutionFilter(xFilterMatrix, yFilterMatrix, factor, bias, grayscale));
         }
+    }
+    public static partial class ExtBitmap
+    {
+        private static Bitmap ResizeBitmap(this Bitmap sourceb, int width, int height)
+        {
+            Bitmap result = new Bitmap(width, height);
+            using (Graphics g = Graphics.FromImage(result))
+                g.DrawImage(sourceb, 0, 0, width, height);
+            return result;
+        }
+
     }
 }

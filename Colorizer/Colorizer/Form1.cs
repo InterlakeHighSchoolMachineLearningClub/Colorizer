@@ -20,7 +20,7 @@ namespace Colorizer
         {
             InitializeComponent();
 
-            var a = new Imaging.MetaImageFilter(new Imaging.GaussianBlurFilter(10, 16),new Imaging.SobelFilter());
+            var a = new Imaging.MetaImageFilter(new Imaging.GaussianBlurFilter(10, 16) { Grayscale = true }, new Imaging.SobelFilter());
 
             var path = System.Environment.GetEnvironmentVariable("USERPROFILE");
             var bit = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\valve.jpg"));
