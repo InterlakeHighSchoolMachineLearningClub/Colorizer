@@ -10,4 +10,12 @@ namespace Colorizer.Learning
     {
         double[] Transform(double[] data);
     }
+
+    class MeanAll : IDataTransform
+    {
+        public double[] Transform(double[] data)
+        {
+            return new[] { data.Sum() / data.Length };
+        }
+    }
 }

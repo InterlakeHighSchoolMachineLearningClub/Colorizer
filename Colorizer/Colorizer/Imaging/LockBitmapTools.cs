@@ -29,7 +29,7 @@ namespace Colorizer.Imaging
         public static void Convolute<T>(this T input, int[,] kernel)
             where T : LockBitmap
         {
-
+            
         }
     }
 }
