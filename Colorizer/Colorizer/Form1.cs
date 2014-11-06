@@ -20,7 +20,7 @@ namespace Colorizer
         {
             InitializeComponent();
 
-            var a = new Imaging.SobelFilter() { Grayscale = true };
+            var a = new Imaging.SobelFilter() { Grayscale = false,Factor = 1,Bias = 2 };
             var path = System.Environment.GetEnvironmentVariable("USERPROFILE");
             var bit = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\valve.jpg"));
             this.mainPictureBox.Image = a.Filter(bit);
