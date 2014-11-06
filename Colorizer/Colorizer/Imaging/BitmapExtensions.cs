@@ -42,7 +42,7 @@ namespace Colorizer.Imaging
             return bitmapResult;
         }
 
-        private static Bitmap ConvolutionFilter(Bitmap sourceBitmap,
+        private static Bitmap ConvolutionFilter(this Bitmap sourceBitmap,
                                              double[,] filterMatrix,
                                                   double factor = 1,
                                                        int bias = 0,
@@ -315,7 +315,7 @@ namespace Colorizer.Imaging
             int bias = 0,
             bool grayscale = false)
         {
-            return null;
+            return new LockBitmap(((Bitmap)(sourceBitmap)).ConvolutionFilter(filterMatrix, factor, bias, grayscale));
         }
         public static LockBitmap ConvolutionFilterWithChoiceOfGrayscale(this LockBitmap sourceBitmap,
                                                         double[,] xFilterMatrix,
