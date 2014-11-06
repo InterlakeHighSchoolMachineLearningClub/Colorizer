@@ -23,15 +23,14 @@ namespace Colorizer
             var a = new MetaImageFilter(new GaussianBlurFilter(), new SobelFilter() { Grayscale = false });
 
             var path = System.Environment.GetEnvironmentVariable("USERPROFILE");
-            var bit = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\valve.jpg"));
+            var bit = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\valve.png"));
 
-            this.mainPictureBox.Image = a.Filter(bit);
+            this.mainPictureBox.Image = new SobelFilter() { Grayscale = false }.Filter(new SquareBitmapEnumerator(bit).SquareEnumeration(100).First());
             //TestLearning();
         }
 
         private static void TestLearning()
         {
-
             DeepBeliefNetwork network = new Accord.Neuro.Networks.DeepBeliefNetwork(2, 23, 1);
             LevenbergMarquardtLearning learn = new Accord.Neuro.Learning.LevenbergMarquardtLearning(network);
 
