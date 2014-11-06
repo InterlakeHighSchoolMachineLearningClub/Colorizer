@@ -328,14 +328,19 @@ namespace Colorizer.Imaging
             return new LockBitmap(((Bitmap)(sourceBitmap)).ConvolutionFilter(xFilterMatrix, yFilterMatrix, factor, bias, grayscale));
         }
     }
+
     public static partial class ExtBitmap
     {
-        private static Bitmap ResizeBitmap(this Bitmap sourceb, int width, int height)
+        public static Bitmap ResizeBitmap(this Bitmap sourceb, int width, int height)
         {
             Bitmap result = new Bitmap(width, height);
             using (Graphics g = Graphics.FromImage(result))
                 g.DrawImage(sourceb, 0, 0, width, height);
             return result;
+        }
+        public static LockBitmap ResizeBitmap(this LockBitmap sourceb, int width, int height)
+        {
+            return new LockBitmap(((Bitmap)(sourceb)).ResizeBitmap(width, height));
         }
 
     }
