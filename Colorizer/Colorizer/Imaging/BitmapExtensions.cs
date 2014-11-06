@@ -10,9 +10,9 @@ using System.Runtime.CompilerServices;
 
 namespace Colorizer.Imaging
 {
-    public static partial class ExtBitmap
+    public static partial class BitmapExtensions
     {
-        private static Bitmap CopyToSquareCanvas(this Bitmap sourceBitmap, int canvasWidthLength)
+        public static Bitmap CopyToSquareCanvas(this Bitmap sourceBitmap, int canvasWidthLength)
         {
             float ratio = 1.0f;
             int maxSide = sourceBitmap.Width > sourceBitmap.Height ?
@@ -329,7 +329,7 @@ namespace Colorizer.Imaging
         }
     }
 
-    public static partial class ExtBitmap
+    public static partial class BitmapExtensions
     {
         public static Bitmap ResizeBitmap(this Bitmap sourceb, int width, int height)
         {
