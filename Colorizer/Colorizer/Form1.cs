@@ -22,7 +22,7 @@ namespace Colorizer
 
             var a = new Imaging.SobelFilter() { Grayscale = true };
             var path = System.Environment.GetEnvironmentVariable("USERPROFILE");
-            var bit = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\heic1404b1920.jpg"));
+            var bit = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\valve.png"));
             this.mainPictureBox.Image = a.Filter(bit);
             //TestLearning();
 

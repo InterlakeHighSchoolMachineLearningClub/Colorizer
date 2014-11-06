@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Colorizer.Imaging
 {
-    public class SobelFilter : BaseImageFilter
+    public sealed class SobelFilter : BaseImageFilter
     {
         public SobelFilter(double factor = 1D, int bias = 0, bool gray = false)
             : base(factor, bias, gray) { }
@@ -18,6 +18,5 @@ namespace Colorizer.Imaging
 
             return source.ConvolutionFilterWithChoiceOfGrayscale(srcX, srcY, this.Factor, this.Bias, this.Grayscale);
         }
-
     }
 }

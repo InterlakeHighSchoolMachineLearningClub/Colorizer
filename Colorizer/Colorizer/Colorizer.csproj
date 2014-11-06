@@ -105,6 +105,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Imaging\BitmapExtensions.cs" />
+    <Compile Include="Imaging\GaussianBlur.cs" />
     <Compile Include="Imaging\IImageFilter.cs" />
     <Compile Include="Imaging\LockBitmap.cs" />
     <Compile Include="Imaging\SobelFilter.cs" />

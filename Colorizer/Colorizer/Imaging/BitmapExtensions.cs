@@ -6,22 +6,23 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Drawing.Drawing2D;
+using System.Runtime.CompilerServices;
 
 namespace Colorizer.Imaging
 {
     public static class ExtBitmap
     {
-        private static Bitmap CopyToSquareCanvas(this Bitmap sourceBitmap, int canvasWidthLenght)
+        private static Bitmap CopyToSquareCanvas(this Bitmap sourceBitmap, int canvasWidthLength)
         {
             float ratio = 1.0f;
             int maxSide = sourceBitmap.Width > sourceBitmap.Height ?
                           sourceBitmap.Width : sourceBitmap.Height;
 
-            ratio = (float)maxSide / (float)canvasWidthLenght;
+            ratio = (float)maxSide / (float)canvasWidthLength;
 
             Bitmap bitmapResult = (sourceBitmap.Width > sourceBitmap.Height ?
-                                    new Bitmap(canvasWidthLenght, (int)(sourceBitmap.Height / ratio))
-                                    : new Bitmap((int)(sourceBitmap.Width / ratio), canvasWidthLenght));
+                                    new Bitmap(canvasWidthLength, (int)(sourceBitmap.Height / ratio))
+                                    : new Bitmap((int)(sourceBitmap.Width / ratio), canvasWidthLength));
 
             using (Graphics graphicsResult = Graphics.FromImage(bitmapResult))
             {
@@ -306,6 +307,14 @@ namespace Colorizer.Imaging
             resultBitmap.UnlockBits(resultData);
 
             return resultBitmap;
+        }
+        public static LockBitmap ConvolutionFilterWithChoiceOfGrayscale(this LockBitmap sourceBitmap,
+            double[,] filterMatrix,
+            double factor = 1,
+            int bias = 0,
+            bool grayscale = false)
+        {
+            return null;
         }
         public static LockBitmap ConvolutionFilterWithChoiceOfGrayscale(this LockBitmap sourceBitmap,
                                                         double[,] xFilterMatrix,
