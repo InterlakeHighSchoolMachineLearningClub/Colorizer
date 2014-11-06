@@ -10,6 +10,7 @@ namespace Colorizer.Imaging
     {
         public override LockBitmap Filter(LockBitmap source)
         {
+            throw new ArgumentNullException();
         }
     }
 }

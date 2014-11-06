@@ -308,6 +308,7 @@ namespace Colorizer.Imaging
 
             return resultBitmap;
         }
+
         public static LockBitmap ConvolutionFilterWithChoiceOfGrayscale(this LockBitmap sourceBitmap,
             double[,] filterMatrix,
             double factor = 1,
