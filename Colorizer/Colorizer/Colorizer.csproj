@@ -113,6 +113,7 @@
     <Compile Include="Imaging\SobelFilter.cs" />
     <Compile Include="Imaging\SquareBitmapEnumerator.cs" />
     <Compile Include="Learning\IDataTransform.cs" />
+    <Compile Include="Learning\LockBitmapData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

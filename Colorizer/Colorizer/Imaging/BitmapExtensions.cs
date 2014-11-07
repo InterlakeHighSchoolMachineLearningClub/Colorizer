@@ -342,6 +342,9 @@ namespace Colorizer.Imaging
         {
             return new LockBitmap(((Bitmap)(sourceb)).ResizeBitmap(width, height));
         }
-
+        public static double AverageColor(this Color x)
+        {
+            return (double)((x.R + x.G + x.B) / 3D);
+        }
     }
 }

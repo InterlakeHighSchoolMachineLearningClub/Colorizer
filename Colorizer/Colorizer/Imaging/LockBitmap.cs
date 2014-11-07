@@ -83,6 +83,8 @@ namespace Colorizer.Imaging
             }
             catch (Exception ex)
             {
+                this.LockBits();
+                this.UnlockBits();
                 throw ex;
             }
         }
@@ -148,8 +150,29 @@ namespace Colorizer.Imaging
 
         public static implicit operator Bitmap(LockBitmap bit)
         {
-            bit.UnlockBits();
+            try
+            {
+                bit.UnlockBits();
+            }
+            catch (Exception e)
+            {
+                bit.LockBits();
+                bit.UnlockBits();
+            } 
             return bit.source;
+        }
+
+        public Color[] GetAllColors()
+        {
+            List<Color> colors = new List<Color>(1 << 10);
+            for (int i = 0; i < this.Width; i++)
+            {
+                for (int y = 0; y < this.Height; y++)
+                {
+                    colors.Add(this[i, y]);
+                }
+            }
+            return colors.ToArray();
         }
     }
 }

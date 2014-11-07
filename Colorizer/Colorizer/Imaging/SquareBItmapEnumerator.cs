@@ -24,9 +24,9 @@ namespace Colorizer.Imaging
         public IEnumerable<LockBitmap> SquareEnumeration(int length)
         {
             LockBitmap temp;
-            for (int i = 0; i < this.Bitmap.Width; i += length)
+            for (int i = 0; i < this.Bitmap.Width - length; i += length)
             {
-                for (int j = 0; j < this.Bitmap.Height; j += length)
+                for (int j = 0; j < this.Bitmap.Height - length; j += length)
                 {
                     temp = new LockBitmap(length, length);
                     for (int k = i; k < length + i; k++)
