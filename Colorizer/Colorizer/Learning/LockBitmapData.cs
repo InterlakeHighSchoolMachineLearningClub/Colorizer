@@ -10,10 +10,13 @@ namespace Colorizer.Learning
 {
     public sealed class LockBitmapData
     {
-        public readonly LockBitmap Bitmap;
+        public readonly int Length;
+
+        private readonly LockBitmap Bitmap;
         public LockBitmapData(LockBitmap bit)
         {
             this.Bitmap = bit;
+            this.Length = Math.Min(bit.Width, bit.Height);
         }
 
         public IEnumerable<Tuple<double[], double[]>> DirectTrainingData(int length)
@@ -28,14 +31,27 @@ namespace Colorizer.Learning
                 yield return Tuple.Create(left, right);
             }
         }
-        public static LockBitmap GetBitmap(double[][] data, int width, int height)
+        public static LockBitmap GetBitmap(LockBitmap data, int length, Func<double[], Color> compute)
         {
-            LockBitmap bit = new LockBitmap(width, height);
-            for (int i = 0; i < data.Length - 1000; i++)
+            LockBitmap temp = new LockBitmap(data.Width, data.Height);
+            for (int i = 0; i < data.Width - length; i++)
             {
-                bit.SetPixel(i % width, i / width, Color.FromArgb((int)data[i][0], (int)data[i][0], (int)data[i][0]));
+                for (int j = 0; j < data.Height - length; j++)
+                {
+                    LockBitmap t = new LockBitmap(length, length);
+                    for (int k = i; k < length + i; k++)
+                    {
+                        for (int l = j; l < length + j; l++)
+                        {
+                            t[k - i, l - j] = data[k, l];
+                        }
+                    }
+
+                    double[] left = t.GetAllColors().Select(x => x.AverageColor()).ToArray();
+                    temp[i, j] = compute(left);
+                }
             }
-            return bit;
+            return temp;
         }
     }
 }

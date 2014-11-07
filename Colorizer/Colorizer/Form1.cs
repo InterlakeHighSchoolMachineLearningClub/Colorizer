@@ -1,4 +1,5 @@
-﻿using Accord.Neuro.Learning;
+﻿using Accord.Neuro;
+using Accord.Neuro.Learning;
 using Accord.Neuro.Networks;
 using AForge.Neuro.Learning;
 using Colorizer.Imaging;
@@ -73,20 +74,21 @@ namespace Colorizer
 
             var l = lockb.DirectTrainingData(3);
 
-            var input = l.Select(x => x.Item1).Take(100).ToArray();
-            var output = l.Select(x => x.Item2.Select(y => y / 255D).ToArray()).Take(100).ToArray();
+            var input = l.Select(x => x.Item1).ToArray();
+            var output = l.Select(x => x.Item2.Select(y => y / 255D).ToArray()).ToArray();
 
-            DeepBeliefNetwork network = new DeepBeliefNetwork(9, 30,20, 3);
+            DeepBeliefNetwork network = new DeepBeliefNetwork(9, 23, 3);
+            new NguyenWidrow(network).Randomize();
             ParallelResilientBackpropagationLearning learning = new ParallelResilientBackpropagationLearning(network);
-
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 150; i++)
             {
-                Debug.WriteLine(learning.RunEpoch(input, output));
+                Console.WriteLine(learning.RunEpoch(input, output));
             }
-            var data = l.Select(x => network.Compute(x.Item1).Select(y => y * 255D).ToArray()).ToArray();
-
-            this.mainPictureBox.Image = LockBitmapData.GetBitmap(data, lockb.Bitmap.Width, lockb.Bitmap.Height);
-            Debugger.Break();
+            this.mainPictureBox.Image = LockBitmapData.GetBitmap(bit, 3, x =>
+                {
+                    var array = network.Compute(x).Select(z => 255 * z).ToArray();
+                    return Color.FromArgb((int)array[0], (int)array[1], (int)array[2]);
+                });
         }
     }
 }
