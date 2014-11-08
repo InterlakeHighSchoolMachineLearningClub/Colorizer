@@ -23,15 +23,6 @@ namespace Colorizer
         {
             InitializeComponent();
             this.TestLearningTry();
-            return;
-            var a = new MetaImageFilter(new GaussianBlurFilter(), new SobelFilter() { Grayscale = false });
-
-            var path = System.Environment.GetEnvironmentVariable("USERPROFILE");
-            var bit = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\valve.jpg"));
-
-            this.mainPictureBox.Image = new SobelFilter() { Grayscale = false }.Filter(new SquareBitmapEnumerator(bit).SquareEnumeration(100).First());
-
-            //TestLearning();
         }
 
         private static void TestLearning()
@@ -68,7 +59,7 @@ namespace Colorizer
         private void TestLearningTry()
         {
             var path = System.Environment.GetEnvironmentVariable("USERPROFILE");
-            var bit = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\valve.jpg"));
+            var bit = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\butterfly.jpg"));
 
             Learning.LockBitmapData lockb = new Learning.LockBitmapData(bit);
 
@@ -80,7 +71,7 @@ namespace Colorizer
             DeepBeliefNetwork network = new DeepBeliefNetwork(9, 23, 3);
             new NguyenWidrow(network).Randomize();
             ParallelResilientBackpropagationLearning learning = new ParallelResilientBackpropagationLearning(network);
-            for (int i = 0; i < 150; i++)
+            for (int i = 0; i < 250; i++)
             {
                 Console.WriteLine(learning.RunEpoch(input, output));
             }
