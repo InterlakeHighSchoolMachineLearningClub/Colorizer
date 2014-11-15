@@ -43,11 +43,14 @@ namespace Colorizer
             {
                 Console.WriteLine(learning.RunEpoch(input, output));
             }
-            this.mainPictureBox.Image = LockBitmapData.GetBitmap(bit, 3, x =>
+            
+            var image = LockBitmapData.GetBitmap(bit, 3, x =>
                 {
                     var array = network.Compute(x).Select(z => 255 * z).ToArray();
                     return Color.FromArgb((int)array[0], (int)array[1], (int)array[2]);
                 });
+
+            this.mainPictureBox.Image = image;
         }
     }
 }
