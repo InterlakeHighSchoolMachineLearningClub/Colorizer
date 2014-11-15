@@ -109,6 +109,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Imaging\BitmapExtensions.cs" />
+    <Compile Include="Imaging\DenoiseFilter.cs" />
     <Compile Include="Imaging\GaussianBlurFilter.cs" />
     <Compile Include="Imaging\IImageFilter.cs" />
     <Compile Include="Imaging\LockBitmap.cs" />
