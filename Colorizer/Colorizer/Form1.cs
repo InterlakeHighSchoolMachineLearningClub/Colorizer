@@ -27,12 +27,12 @@ namespace Colorizer
         private void LearnPhoto()
         {
             var path = System.Environment.GetEnvironmentVariable("USERPROFILE");
-            var bit = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\butterfly.jpg"));
+            var bit = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\valve.png"));
 
             Learning.LockBitmapData lockb = new Learning.LockBitmapData(bit);
 
             var l = lockb.DirectTrainingData(3);
-
+            
             var input = l.Select(x => x.Item1).ToArray();
             var output = l.Select(x => x.Item2.Select(y => y / 255D).ToArray()).ToArray();
 
