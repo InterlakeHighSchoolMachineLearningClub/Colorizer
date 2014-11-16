@@ -27,7 +27,7 @@ namespace Colorizer
         private void LearnPhoto()
         {
             var path = System.Environment.GetEnvironmentVariable("USERPROFILE");
-            var bit = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\valve.png"));
+            var bit = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\butterfly.jpg"));
 
             Learning.LockBitmapData lockb = new Learning.LockBitmapData(bit);
 
@@ -50,7 +50,7 @@ namespace Colorizer
                     return Color.FromArgb((int)array[0], (int)array[1], (int)array[2]);
                 });
 
-            this.mainPictureBox.Image = image;
+            this.mainPictureBox.Image = new DenoiseFilter(1).Filter(image);
         }
     }
 }

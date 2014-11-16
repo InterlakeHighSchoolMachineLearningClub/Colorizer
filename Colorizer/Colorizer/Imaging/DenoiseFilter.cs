@@ -8,6 +8,7 @@ namespace Colorizer.Imaging
 {
     class DenoiseFilter : BaseImageFilter
     {
+        static double factor = 0.125;
         static double[,] mask = new double[,] { { 1, 1, 1 }, { 1, 0, 1 }, { 1, 1, 1 } };
         public int Iterations { get; set; }
 
@@ -18,7 +19,7 @@ namespace Colorizer.Imaging
 
         public override LockBitmap Filter(LockBitmap source)
         {
-            return source.ConvolutionFilterWithChoiceOfGrayscale(mask, 0.1, 0, false);
+            return source.ConvolutionFilterWithChoiceOfGrayscale(mask, factor, 0, false);
         }
     }
 }
