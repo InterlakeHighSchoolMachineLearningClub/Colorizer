@@ -115,7 +115,7 @@
     <Compile Include="Imaging\LockBitmap.cs" />
     <Compile Include="Imaging\MetaImageFilter.cs" />
     <Compile Include="Imaging\SobelFilter.cs" />
-    <Compile Include="Imaging\SquareBitmapEnumerator.cs" />
+    <Compile Include="Learning\SquareBitmapEnumerator.cs" />
     <Compile Include="Learning\IDataTransform.cs" />
     <Compile Include="Learning\LockBitmapData.cs" />
     <Compile Include="Program.cs" />
