@@ -58,7 +58,7 @@ namespace Colorizer
             DeepBeliefNetwork network = new DeepBeliefNetwork(9, 23, 3);
             new NguyenWidrow(network).Randomize();
             ParallelResilientBackpropagationLearning learning = new ParallelResilientBackpropagationLearning(network);
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 101; i++)
             {
                 Console.WriteLine(learning.RunEpoch(input, output));
             }
