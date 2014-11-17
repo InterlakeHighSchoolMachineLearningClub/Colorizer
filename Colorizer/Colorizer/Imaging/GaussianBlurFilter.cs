@@ -14,6 +14,11 @@ namespace Colorizer.Imaging
 
         private readonly double[,] filter;
 
+        /// <summary>
+        /// For dsl purposes, kinda ugly
+        /// </summary>
+        public GaussianBlurFilter() :
+            this(10, 16) { }
         public GaussianBlurFilter(int length = 10, double weih = 16)
         {
             Trace.Assert(length > 0);

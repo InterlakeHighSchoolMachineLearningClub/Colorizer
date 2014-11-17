@@ -101,7 +101,7 @@ namespace Colorizer.Imaging
 
                     byteOffset = offsetY *
                                  sourceData.Stride +
-                                 offsetX * 4;
+                                 (offsetX << 2);
 
                     for (int filterY = -filterOffset;
                         filterY <= filterOffset; filterY++)

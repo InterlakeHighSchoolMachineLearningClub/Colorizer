@@ -34,18 +34,21 @@ namespace Colorizer.Learning
         public static LockBitmap GetBitmap(LockBitmap data, int length, Func<double[], Color> compute)
         {
             LockBitmap temp = new LockBitmap(data.Width, data.Height);
-            for (int i = 0; i < data.Width - length; i++)
+            var newWidth = data.Width - length;
+            var newHeight = data.Height - length;
+
+            for (int i = 0; i < newWidth; i++)
             {
-                for (int j = 0; j < data.Height - length; j++)
+                for (int j = 0; j < newHeight; j++)
                 {
                     LockBitmap t = new LockBitmap(length, length);
-                    for (int k = i; k < length + i; k++)
+                    Parallel.For(i, length + i, k =>
                     {
                         for (int l = j; l < length + j; l++)
                         {
                             t[k - i, l - j] = data[k, l];
                         }
-                    }
+                    });
 
                     double[] left = t.GetAllColors().Select(x => x.AverageColor()).ToArray();
                     temp[i, j] = compute(left);

@@ -102,6 +102,7 @@
     <Compile Include="BasicExtensions.cs" />
     <Compile Include="DataMining\ImageScraper.cs" />
     <Compile Include="DataMining\WebTools.cs" />
+    <Compile Include="DSL\FilterSyntax\FilterRegistery.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

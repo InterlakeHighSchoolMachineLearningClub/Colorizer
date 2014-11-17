@@ -8,9 +8,10 @@ namespace Colorizer.Imaging
 {
     public sealed class SobelFilter : BaseImageFilter
     {
-        public SobelFilter(double factor = 1D, int bias = 0, bool gray = false)
-            : base(factor, bias, gray) { }
+        public SobelFilter()
+        {
 
+        }
         public override LockBitmap Filter(LockBitmap source)
         {
             double[,] srcX = new double[,] { { -1, 0, 1 }, { -2, 0, 2 }, { -1, 0, 1 } };
