@@ -1,6 +1,7 @@
 ﻿using Colorizer.Imaging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -34,6 +35,11 @@ namespace Colorizer.DSL.FilterSyntax
                         FilterRegistery.SetNecessaryPropertiesFromUnaryString(instance, type, item);
                     }
                     FilterRegistery.MetaFilter.Add(instance as IImageFilter);
+                });
+            FilterRegistery.commandDictionary.Add("-filter", (x) =>
+                {
+                    var value = FilterRegistery.typeDictionary[x[1]];
+                    FilterRegistery.MetaFilter.Remove(int.Parse(x[2]));
                 });
             FilterRegistery.commandDictionary.Add("show", (x) =>
                 {

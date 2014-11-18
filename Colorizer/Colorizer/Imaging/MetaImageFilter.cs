@@ -38,7 +38,11 @@ namespace Colorizer.Imaging
         {
             this.filters.Add(fi);
         }
-
+        public bool Remove(IImageFilter fi)
+        {
+            fi.NullCheck();
+            return this.filters.Remove(fi);
+        }
         public IEnumerator<IImageFilter> GetEnumerator()
         {
             return this.filters.GetEnumerator();
@@ -47,6 +51,11 @@ namespace Colorizer.Imaging
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return this.GetEnumerator();
+        }
+
+        public void Remove(int p)
+        {
+            this.filters.RemoveAt(p);
         }
     }
 }
