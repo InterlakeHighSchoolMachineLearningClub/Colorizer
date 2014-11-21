@@ -37,14 +37,9 @@ namespace Colorizer.DSL.FilterSyntax
                     FilterRegistery.MetaFilter.Add(instance as IImageFilter);
                 });
             FilterRegistery.commandDictionary.Add("-filter", (x) =>
-                {
-                    var value = FilterRegistery.typeDictionary[x[1]];
-                    FilterRegistery.MetaFilter.Remove(int.Parse(x[2]));
-                });
+                FilterRegistery.MetaFilter.Remove(int.Parse(x[1])));
             FilterRegistery.commandDictionary.Add("show", (x) =>
-                {
-                    FilterRegistery.PictureBox.Image = FilterRegistery.MetaFilter.Filter(FilterRegistery.Bitmap);
-                });
+                FilterRegistery.PictureBox.Image = FilterRegistery.MetaFilter.Filter(FilterRegistery.Bitmap));
             FilterRegistery.commandDictionary.Add("show-filters", (x) =>
             {
                 Console.WriteLine();
@@ -54,8 +49,6 @@ namespace Colorizer.DSL.FilterSyntax
                 }
                 Console.WriteLine();
             });
-
-
         }
 
         public static void RegisterBitmap(LockBitmap bit)
