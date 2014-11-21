@@ -11,7 +11,7 @@ namespace Colorizer.Imaging
     {
         public override LockBitmap Filter(LockBitmap source)
         {
-            
+            return null;
         }
 
         public static void UnnormalizedLogPrior(double[,] x)
