@@ -6,13 +6,9 @@ using Colorizer.Imaging;
 using Colorizer.Learning;
 using System;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Colorizer
@@ -63,10 +59,10 @@ namespace Colorizer
                 Console.WriteLine(learning.RunEpoch(input, output));
             }
             this.testBitmap = LockBitmapData.GetBitmap(b, 3, x =>
-                    {
-                        var array = network.Compute(x).Select(z => 255 * z).ToArray();
-                        return Color.FromArgb((int)array[0], (int)array[1], (int)array[2]);
-                    });
+                {
+                    var array = network.Compute(x).Select(z => 255 * z).ToArray();
+                    return Color.FromArgb((int)array[0], (int)array[1], (int)array[2]);
+                });
             this.mainPictureBox.Image = this.testBitmap;
         }
 
