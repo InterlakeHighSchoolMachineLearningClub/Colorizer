@@ -20,6 +20,7 @@ namespace Colorizer
         public Form1()
         {
             InitializeComponent();
+
             var path = System.Environment.GetEnvironmentVariable("USERPROFILE");
             var b = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\butterfly.jpg"));
 
