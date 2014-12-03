@@ -23,10 +23,13 @@ namespace Colorizer.Imaging
                     z[i, j] = 1;
             z[1, 1] = 0;
             double[,] zVec = z.Inverse();
-            double nonZeros = new Func<double>(() =>
-            {
-
-            });
+            double[] zLin = zVec.InLine();
+            var toepMatrix = Matrix.Diagonal(zVec.Length, zVec.Length);
+            var nonZeros = new List<double>();
+            for (int i = 0; i < zLin.Length; i++)
+                if (zLin[i] == 0)
+                    nonZeros.Add(zLin[i]);
+            //return DOT PRODUCTS OF ARRAYS
         }
     }
 }

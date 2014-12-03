@@ -109,11 +109,13 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Imaging\ArrayExtensions.cs" />
     <Compile Include="Imaging\BitmapExtensions.cs" />
     <Compile Include="Imaging\DenoiseFilter.cs" />
     <Compile Include="Imaging\GaussianBlurFilter.cs" />
     <Compile Include="Imaging\ColorHistogram.cs" />
     <Compile Include="Imaging\IImageFilter.cs" />
+    <Compile Include="Imaging\IsingFilter.cs" />
     <Compile Include="Imaging\LockBitmap.cs" />
     <Compile Include="Imaging\MetaImageFilter.cs" />
     <Compile Include="Imaging\SobelFilter.cs" />
