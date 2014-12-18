@@ -31,6 +31,7 @@ namespace Colorizer
                     FilterRegistery.Register(new AveragingDenoiseFilter(), "avgd");
                     FilterRegistery.Register(new GaussianBlurFilter(), "gaussian");
                     FilterRegistery.Register(new SobelFilter(), "sobel");
+                    FilterRegistery.Register(new IsingFilter(), "ising");
 
                     FilterRegistery.RegisterBitmap(this.testBitmap);
                     FilterRegistery.RegisterPictureBox(this.mainPictureBox);
