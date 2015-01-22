@@ -35,7 +35,7 @@ namespace Colorizer.Imaging
         }
         private static double[,] Calculate(int lenght, double weight)
         {
-            double[,] Kernel = new double[lenght, lenght];
+            double[,] kernel = new double[lenght, lenght];
             double sumTotal = 0;
 
             int kernelRadius = lenght / 2;
@@ -54,11 +54,11 @@ namespace Colorizer.Imaging
                                (filterY * filterY)) /
                                (2 * (weight * weight));
 
-                    Kernel[filterY + kernelRadius,
+                    kernel[filterY + kernelRadius,
                            filterX + kernelRadius] =
                            calculatedEuler * Math.Exp(-distance);
 
-                    sumTotal += Kernel[filterY + kernelRadius,
+                    sumTotal += kernel[filterY + kernelRadius,
                                        filterX + kernelRadius];
                 }
             }
@@ -67,12 +67,12 @@ namespace Colorizer.Imaging
             {
                 for (int x = 0; x < lenght; x++)
                 {
-                    Kernel[y, x] = Kernel[y, x] *
+                    kernel[y, x] = kernel[y, x] *
                                    (1.0 / sumTotal);
                 }
             }
 
-            return Kernel;
+            return kernel;
         }
     }
 

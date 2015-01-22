@@ -1,6 +1,9 @@
 ﻿using Accord.Neuro;
 using Accord.Neuro.Learning;
 using Accord.Neuro.Networks;
+using AForge.Imaging.Filters;
+using AForge.Neuro;
+using Colorizer.DataMining;
 using Colorizer.DSL.FilterSyntax;
 using Colorizer.Imaging;
 using Colorizer.Learning;
@@ -15,16 +18,25 @@ namespace Colorizer
 {
     public partial class Form1 : Form
     {
+        bool switchPic = false;
         private LockBitmap testBitmap;
+        private LockBitmap initialBitmap;
 
         public Form1()
         {
             InitializeComponent();
 
             var path = System.Environment.GetEnvironmentVariable("USERPROFILE");
-            var b = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\butterfly.jpg"));
 
-            this.LearnPhoto(b);
+            var b = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\butterfly.jpg"));
+            var a = new LockBitmap((Bitmap)Bitmap.FromFile(path + "\\Pictures\\bwbutterfly.jpg"));
+
+            this.initialBitmap = a;
+
+            var ser = ImageScraper.RetrieveImages("butterly");
+            this.mainPictureBox.Image = ser.First();
+            return;
+            this.LearnPhoto(b, a);
 
             Thread t = new Thread(() =>
                 {
@@ -43,31 +55,53 @@ namespace Colorizer
                 });
             t.Start();
         }
-        private void LearnPhoto(LockBitmap b)
+        private void LearnPhoto(LockBitmap b, LockBitmap test)
         {
+            HistogramEqualization filter = new HistogramEqualization();
 
             Learning.LockBitmapData lockb = new Learning.LockBitmapData(b);
 
-            var l = lockb.DirectTrainingData(3);
+            const int len = 3;
+
+            var l = lockb.DirectTrainingData(len);
 
             var input = l.Select(x => x.Item1).ToArray();
             var output = l.Select(x => x.Item2.Select(y => y / 255D).ToArray()).ToArray();
 
-            DeepBeliefNetwork network = new DeepBeliefNetwork(9, 23, 3);
+            DeepBeliefNetwork network = new DeepBeliefNetwork((int)Math.Pow(len, 2), 23, 3);
             new NguyenWidrow(network).Randomize();
+
             ParallelResilientBackpropagationLearning learning = new ParallelResilientBackpropagationLearning(network);
-            for (int i = 0; i < 10; i++)
+
+            for (int i = 0; i < 100; i++)
             {
+                var shuffle = BasicExtensions.Shuffle(input, output);
+                input = shuffle.Item1;
+                output = shuffle.Item2;
                 Console.WriteLine(learning.RunEpoch(input, output));
             }
-            this.testBitmap = LockBitmapData.GetBitmap(b, 3, x =>
+
+            this.testBitmap = (LockBitmapData.GetBitmap(test, len, x =>
                 {
                     var array = network.Compute(x).Select(z => 255 * z).ToArray();
                     return Color.FromArgb((int)array[0], (int)array[1], (int)array[2]);
-                });
+                }));
+            filter.ApplyInPlace(this.testBitmap);
             this.mainPictureBox.Image = this.testBitmap;
         }
 
+        private void mainPictureBox_Click(object sender, EventArgs e)
+        {
+            if (switchPic)
+            {
+                this.mainPictureBox.Image = this.testBitmap;
+            }
+            else
+            {
+                this.mainPictureBox.Image = this.initialBitmap;
+            }
+            switchPic = !switchPic;
+        }
 
     }
 }

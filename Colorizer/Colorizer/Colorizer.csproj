@@ -87,6 +87,9 @@
     <Reference Include="AForge.Vision">
       <HintPath>..\packages\AForge.Vision.2.2.5\lib\AForge.Vision.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -112,6 +115,7 @@
     <Compile Include="Imaging\ArrayExtensions.cs" />
     <Compile Include="Imaging\BitmapExtensions.cs" />
     <Compile Include="Imaging\DenoiseFilter.cs" />
+    <Compile Include="Imaging\EqualNormalizationFilter.cs" />
     <Compile Include="Imaging\GaussianBlurFilter.cs" />
     <Compile Include="Imaging\ColorHistogram.cs" />
     <Compile Include="Imaging\IImageFilter.cs" />

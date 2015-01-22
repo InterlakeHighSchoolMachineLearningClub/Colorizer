@@ -34,9 +34,9 @@ namespace Colorizer.Imaging
         }
         public ColorHistogram(double perPixel, LockBitmap bitmap)
         {
-            Trace.Assert(perPixel > 1);
+            Trace.Assert(perPixel >= 1);
 
-            this.NumberOfBins = (int)(255D / perPixel);
+            this.NumberOfBins = (int)(256D / perPixel);
             this.PerPixel = perPixel;
             this.Bitmap = bitmap;
 
@@ -87,8 +87,8 @@ namespace Colorizer.Imaging
             : base(h)
         {
             this.R = CumulativeColorHistogram.GetCumulative(this.R);
-            this.B = CumulativeColorHistogram.GetCumulative(this.R);
-            this.G = CumulativeColorHistogram.GetCumulative(this.R);
+            this.B = CumulativeColorHistogram.GetCumulative(this.B);
+            this.G = CumulativeColorHistogram.GetCumulative(this.G);
         }
         private static int[] GetCumulative(int[] a)
         {

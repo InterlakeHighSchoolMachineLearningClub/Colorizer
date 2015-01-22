@@ -158,7 +158,7 @@ namespace Colorizer.Imaging
             {
                 bit.LockBits();
                 bit.UnlockBits();
-            } 
+            }
             return bit.source;
         }
 
