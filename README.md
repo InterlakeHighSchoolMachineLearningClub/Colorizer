@@ -3,7 +3,6 @@ Colorizer
 Proof of concept: automatically colorizes grayscale images based on contextual learning. Below is an example:
 
 
-
 The image below is the original image of the butterfly
 ![alt text](https://raw.github.com/InterlakeHighSchoolMachineLearningClub/Colorizer/master/Examples/butterfly.jpg)
 
